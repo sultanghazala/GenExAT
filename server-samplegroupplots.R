@@ -1,5 +1,5 @@
 ## ==================================================================================== ##
-# App Name: GeExAT - Gene Expression Analysis Tool
+# App Name: GenExAT - Gene Expression Analysis Tool
 # Author: Ghazala Sultan & Swaleha Zubair from Department of Computer Science, AMU, Aligarh, India.
 #
 # This is a Shiny web application with All Rights Reserved to aforementioned Author.

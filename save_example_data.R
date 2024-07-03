@@ -8,18 +8,18 @@
 source("helpers.R")
 source("fun-input-analyze-data.R")
 
-alldata  <- read_csv("data/mousecounts_example.csv")
+alldata  <- read_csv("data/examplecounts_short.csv")
 
 analyzed_data <- analyze_expression_data(alldata, analysis_method="edgeR", numgeneids = 2)
 names(analyzed_data)
 
-write.csv(analyzed_data$data_results_table,file="data/mousecounts_example_analyzed.csv",quote=FALSE,row.names=FALSE)
-write.csv(analyzed_data$data_results_table[1:100,],file="data/exampleanalysisres_short.csv",quote=FALSE,row.names=FALSE)
+write.csv(analyzed_data$data_results_table,file="data/examplecounts_short_analyzed.csv",quote=FALSE,row.names=FALSE)
+write.csv(analyzed_data$data_results_table[1:100,],file="data/examplecounts_short_analysisres_short.csv",quote=FALSE,row.names=FALSE)
 write.csv(alldata[1:100,],"data/examplecounts_short.csv",row.names = FALSE)
 
 # LOADED DATA FOR EXAMPLE
 save(analyzed_data,
-     file="data/mousecounts_example.RData")
+     file="data/examplecounts_short_data.RData")
 
 
 

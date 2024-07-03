@@ -120,6 +120,7 @@ tabPanel("Heatmaps",
                             div(style="overflow-x: auto;",   # added div to control table horizontal overflow
                             dataTableOutput("heatdat_rna")
                            ),
+                  ) #tabpanel 
                 )#tabsetPanel
          )#column
          )#fluidrow

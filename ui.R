@@ -349,74 +349,37 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                                 
                         
                       #----------------------------------------------------------------------------#
-                      #  Help  
-                      #----------------------------------------------------------------------------#
-                      tabPanel(strong("Help"),       
-                               column(width=12,
-                                      h3("Glossary"),
-                                      hr(),
-                                      p(strong("Bioinformatics:"),"The field of endeavor that relates to the collection, organization and analysis of large amounts of biological data using networks of computers and databases (usually with reference to the genome project and DNA sequence information)."),
-                                      br(),
-                                      p(strong("Sequencing reads:"),"The data strings of A,T, C, and G bases corresponding to each DNA fragment in a sequencing library. In Illumina technology, when a library is sequenced, each DNA fragment produces a cluster on the surface of a flow cell and each cluster generates a single sequencing read. (For example, 1 million clusters on a flow cell would produce 1 million single reads and 2 million paired-end reads.) Read lengths can range from 25 bp to 300 bp or higher depending on application needs."),
-                                      br(),
-                                      p(strong("Paired-end sequencing:"),"A process of sequencing from both ends of a DNA fragment in the same run."),
-                                      br(),
-                                      p(strong("Reference genome:"),"A reference genome is a fully sequenced and assembled genome that acts as a scaffold against which new sequence reads are aligned and compared. Typically, reads generated from a sequencing run are aligned to a reference genome as a first step in data analysis. Examples of reference genomes include hg19 and hg38."),
-                                      br(),
-                                      p(strong("Quality score (Q-score):"), "A metric in NGS that predicts or estimates the probability of an error in base calling. A quality score (Q-score) serves as a compact way to communicate very small error probabilities. A high Q-score implies that a base call is more reliable and less likely to be incorrect."),
-                                      br(),
-                                      p(strong("cDNA (complementary DNA):"), "A DNA strand copied from mRNA using reverse transcriptase. A cDNA library represents all of the expressed DNA in a cell."),
-                                      br(),
-                                      p(strong("Ribonucleic acid (RNA):"), "A category of nucleic acids in which the component sugar is ribose and consisting of the four nucleotides Thymidine, Uracil, Guanine, and Adenine. The three types of RNA are messenger RNA (mRNA), transfer RNA (tRNA) and ribosomal RNA (rRNA)."),
-                                      # style="border: 10px solid transparent;border-image: url(border4.png) 30 round")
-                                      br(),
-                                      
-                               ), #column closing
-                               
-                               fluidRow(p("See More",a(href="https://www.biosyn.com/bioinformatics.aspx", "Here",target="_blank"),
-                                          style="text-align:left;color:black")#,
-                                        #  hr(),
-                                        #  p("© Developed by G. Sultan, S. Zubair, Dept. of CS, Aligarh Muslim University, Aligarh, India | All Rights Reserved",
-                                        #    style="text-align:center; font-family: timesbackground-color:cyan"),
-                                        #  hr()
-                               )
-                      ), #glossary tabPanel
-                      
-                      
-                      #----------------------------------------------------------------------------#
                       #  FAQs (Frequently Asked Questions)  
                       #----------------------------------------------------------------------------#
                       
                       tabPanel(strong("Frequently Asked Questions"),
                                
                                column(width=12,
-                                      h3("Glossary"),
-                                      hr(),
                                       p(strong("How does GenExAT App work?"),
+                                        br(),
                                         "GenExAT is abbreviated for Gene Expression Analysis Tool. It is a web application that perform analysis based on different types of biological data, including microarray and bulk RNA-seq, single-cell RNA-seq and Exome-seq data. ",
                                         br(),
                                         "GenExAT utilizes expression data to perform bioinformatics analysis and output the estimates in the form of tables and figures."),
                                         br(),
                                       
                                       p(strong("Which data formats GenExAT accept?"),
-                                        "GenExAT accepts data in both excel or CSV (comma seperated values) format."),
                                       br(),
-                                      p(strong("Paired-end sequencing:"),"A process of sequencing from both ends of a DNA fragment in the same run."),
+                                          "GenExAT accepts data in both excel or CSV (comma seperated values) format."),
                                       br(),
-                                      p(strong("Reference genome:"),"A reference genome is a fully sequenced and assembled genome that acts as a scaffold against which new sequence reads are aligned and compared. Typically, reads generated from a sequencing run are aligned to a reference genome as a first step in data analysis. Examples of reference genomes include hg19 and hg38."),
-                                      br(),
-                                      p(strong("Quality score (Q-score):"), "A metric in NGS that predicts or estimates the probability of an error in base calling. A quality score (Q-score) serves as a compact way to communicate very small error probabilities. A high Q-score implies that a base call is more reliable and less likely to be incorrect."),
-                                      br(),
-                                      p(strong("cDNA (complementary DNA):"), "A DNA strand copied from mRNA using reverse transcriptase. A cDNA library represents all of the expressed DNA in a cell."),
-                                      br(),
-                                      p(strong("Ribonucleic acid (RNA):"), "A category of nucleic acids in which the component sugar is ribose and consisting of the four nucleotides Thymidine, Uracil, Guanine, and Adenine. The three types of RNA are messenger RNA (mRNA), transfer RNA (tRNA) and ribosomal RNA (rRNA)."),
-                                      # style="border: 10px solid transparent;border-image: url(border4.png) 30 round")
+                                          "- File must have a header row."),
+                                     br(),
+                                          "- First/Left-hand column(s) must be gene identifiers."),
+                                     br(),
+                                          "- Format expression column names as `GROUPNAME_REPLICATE#`, e.g. `Treat_1, # Treat_2,Treat_3, Control_1, Control_2."),
+
+                                    br(),
+                                    p(strong("Paired-end sequencing:"),"A process of sequencing from both ends of a DNA fragment in the same run.")
                                       br(),
                                       
                                ), #column closing
                                
-                               fluidRow(p("See More",a(href="https://www.biosyn.com/bioinformatics.aspx", "Here",target="_blank"),
-                                          style="text-align:left;color:black")#,
+                               #fluidRow(p("See More",a(href="https://www.biosyn.com/bioinformatics.aspx", "Here",target="_blank"),
+                               #           style="text-align:left;color:black")#,
                                         #  hr(),
                                         #  p("© Developed by G. Sultan, S. Zubair, Dept. of CS, Aligarh Muslim University, Aligarh, India | All Rights Reserved",
                                         #    style="text-align:center; font-family: timesbackground-color:cyan"),
@@ -431,10 +394,10 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                       #  Glossary  
                       #----------------------------------------------------------------------------#
                       
-                      tabPanel(strong("Bioinformatics Glossary"),
+                      tabPanel(strong("Glossary"),
                                icon = icon("book"), #class = "fa-2x"), 
                                column(width=12,
-                                      
+                                      h3("Glossary"),
                                       hr(),
                                       p(strong("Bioinformatics:"),"The field of endeavor that relates to the collection, organization and analysis of large amounts of biological data using networks of computers and databases (usually with reference to the genome project and DNA sequence information)."),
                                       br(),
@@ -462,7 +425,24 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                         #  hr()
                                )
                       ), #glossary tabPanel
+
+
+                      #----------------------------------------------------------------------------#
+                      #  Help  
+                      #----------------------------------------------------------------------------#
+                      tabPanel(strong("Help"),       
+                               column(width=12,
+                                      p("For more information please contact the",em("developers"),
+                                           a(href="https://brcafemdb-amu.in/about-us.php#contact", "Here",target="_blank"),
+                                           style="text-align:left;color:black"), 
+                                      br(),
+                                      
+                               ), #column closing
+                      ), # help tabPanel
                       
+                      
+
+
                       #----------------------------------------------------------------------------#
                       #  4 - Data Analysis ###
                       #----------------------------------------------------------------------------#  

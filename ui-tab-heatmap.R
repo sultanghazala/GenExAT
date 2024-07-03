@@ -84,7 +84,7 @@ tabPanel("Heatmaps",
                             #                                              )
                             #                             )
            ), #conditional panel
-           h3("Visualization Settings"),
+           h4("Other Settings"),
            
            checkboxInput("heatmap_rowlabels",
                          "Show gene (row) labels",value = TRUE

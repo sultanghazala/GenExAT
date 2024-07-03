@@ -373,7 +373,7 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                           "- Format expression column names as `GROUPNAME_REPLICATE#`, e.g. `Treat_1, # Treat_2,Treat_3, Control_1, Control_2.",
 
                                     br(),
-                                    p(strong("Paired-end sequencing:"),"A process of sequencing from both ends of a DNA fragment in the same run.")
+                                    p(strong("Paired-end sequencing:"),"A process of sequencing from both ends of a DNA fragment in the same run."),
                                       br(),
                                       
                                ), #column closing
@@ -384,7 +384,7 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                         #  p("© Developed by G. Sultan, S. Zubair, Dept. of CS, Aligarh Muslim University, Aligarh, India | All Rights Reserved",
                                         #    style="text-align:center; font-family: timesbackground-color:cyan"),
                                         #  hr()
-                               )
+                              # )
                       ), #glossary tabPanel
                       
                       

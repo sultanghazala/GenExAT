@@ -307,8 +307,7 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                         #----------------------------------------------------------------------------#
                         #  3 - Exome ###
                         #----------------------------------------------------------------------------#  
-                        tabPanel(
-                          title = "Exome-Seq",
+                        tabPanel(strong("Exome-Seq"),
                                  #tags$style(HTML(".tabbable > .nav > li[class=active] > a {background-color: #ff9999; color:black}")),
 
                                  fluidRow(
@@ -352,8 +351,7 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                       #----------------------------------------------------------------------------#
                       #  Help  
                       #----------------------------------------------------------------------------#
-                      tabPanel(
-                           title = "Help",       
+                      tabPanel(strong("Help"),       
                                column(width=12,
                                       h3("Glossary"),
                                       hr(),
@@ -389,14 +387,19 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                       #  FAQs (Frequently Asked Questions)  
                       #----------------------------------------------------------------------------#
                       
-                      tabPanel(strong("FAQs"),
+                      tabPanel(strong("Frequently Asked Questions"),
                                
                                column(width=12,
                                       h3("Glossary"),
                                       hr(),
-                                      p(strong("Bioinformatics:"),"The field of endeavor that relates to the collection, organization and analysis of large amounts of biological data using networks of computers and databases (usually with reference to the genome project and DNA sequence information)."),
-                                      br(),
-                                      p(strong("Sequencing reads:"),"The data strings of A,T, C, and G bases corresponding to each DNA fragment in a sequencing library. In Illumina technology, when a library is sequenced, each DNA fragment produces a cluster on the surface of a flow cell and each cluster generates a single sequencing read. (For example, 1 million clusters on a flow cell would produce 1 million single reads and 2 million paired-end reads.) Read lengths can range from 25 bp to 300 bp or higher depending on application needs."),
+                                      p(strong("How does GenExAT App work?"),
+                                        "GenExAT is abbreviated for Gene Expression Analysis Tool. It is a web application that perform analysis based on different types of biological data, including microarray and bulk RNA-seq, single-cell RNA-seq and Exome-seq data. ",
+                                        br(),
+                                        "GenExAT utilizes expression data to perform bioinformatics analysis and output the estimates in the form of tables and figures."),
+                                        br(),
+                                      
+                                      p(strong("Which data formats GenExAT accept?"),
+                                        "GenExAT accepts data in both excel or CSV (comma seperated values) format."),
                                       br(),
                                       p(strong("Paired-end sequencing:"),"A process of sequencing from both ends of a DNA fragment in the same run."),
                                       br(),

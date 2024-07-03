@@ -1,5 +1,5 @@
 ## ==================================================================================== ##
-# App Name: GeExAT - Gene Expression Analysis Tool
+# App Name: GenExAT - Gene Expression Analysis Tool
 # Author: Ghazala Sultan & Swaleha Zubair from Department of Computer Science, AMU, Aligarh, India.
 #
 # This is a Shiny web application with All Rights Reserved to aforementioned Author.
@@ -122,7 +122,11 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                  )
                             ),
                  
-                 navbarPage("",
+                 navbarPage(
+                            "GenExAT",
+                            
+                            id = "tabs",
+                   
                             tabPanel(strong("Home"),
                                      icon = icon("home"), #class = "fa-2x"), 
                                      fluidRow(#column(tags$img(src="bioinfo.PNG",width="220px",height="260px"),width=2),
@@ -179,7 +183,7 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                      
                                     # tabsetPanel(
                                        
-                                     #  tabPanel("About Microarrayuencing",
+                                     #  tabPanel("About Microarray",
                                      #           br(),
                                               fluidRow(
                                                   column(
@@ -197,7 +201,8 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                                     #   style="text-align:justify;color:black"),#;background-color:papayawhip;padding:15px;border-radius:10px"),
                                                     br(),
                                                     
-                                                    h4(p(strong("Start Analysis", a(href="",icon("search"))),
+                                                    h4(p(strong("Start Analysis"), 
+                                                         actionLink("go_to_analysis", icon("tools")),
                                                          #style="text-align:left;color:black;background-color:#73a839;padding:15px;border-radius:10px")),#width:150px; 
                                                     )),#width:150px; 
                                                     
@@ -209,37 +214,6 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                                          br(),
                                                          br(),
                                                          width = 5)),
-
-                                       
-                                      # tabPanel("Data Analysis",
-                                      #          br(),
-                                      #          sidebarLayout(
-                                      #            sidebarPanel(
-                                      #              
-                                      #              fileInput("file", "Choose CSV File", accept = ".csv"),
-                                      #              checkboxInput("header", "Header", TRUE),
-                                      #              selectInput("sep", "Separator", choices = c(Comma = ",", Semicolon = ";", Tab = "\t"), selected = ","),
-                                      #              selectInput("columns", "Select Column(s) to Plot", choices = NULL, multiple = TRUE),
-                                      #              width=4, style="text-align:left"),
-                                      #            
-                                      #            mainPanel(
-                                      #              tabsetPanel(
-                                      #                br(),
-                                      #                tabPanel("Data Table", dataTableOutput("table")),
-                                      #                tabPanel("Boxplot", plotlyOutput("boxplot")),
-                                      #                tabPanel("Stacked Bar Plot", plotlyOutput("stacked_bar")),
-                                      #                tabPanel("Heatmap", plotlyOutput("heatmap")),
-                                      #                tabPanel("Pie Chart", plotlyOutput("pie"))
-                                      #              )
-                                      #            )
-                                      #          ),
-                                      #         hr(),
-                                      #         p("© Developed by G. Sultan, S. Zubair, Dept. of CS, Aligarh Muslim University, Aligarh, India | All Rights Reserved",
-                                      #           style="text-align:center; font-family: timesbackground-color:cyan"),
-                                      #         hr()
-                                                
-                                     #  )  # tabPanel: sub-tabs
-                                  #   )  # tabsetPanel
                             ),  # tabPanel main Microarray
                         
                         
@@ -272,7 +246,8 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                     #   style="text-align:justify;color:black"),#;background-color:papayawhip;padding:15px;border-radius:10px"),
                                      br(),
                                      
-                                    h4(p(strong("Start Analysis", a(href="",icon("search"))),
+                                    h4(p(strong("Start Analysis"), 
+                                         actionLink("go_to_analysis", icon("tools")),
                                          #style="text-align:left;color:black;background-color:#73a839;padding:15px;border-radius:10px")),#width:150px; 
                                          )),#width:150px; 
                                     
@@ -284,39 +259,9 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                           br(),
                                    width = 5)),
 
-                                 # tabPanel("Data Analysis",
-                                 #          br(),
-                                 #          sidebarLayout(
-                                 #            sidebarPanel(
-                                 #              
-                                 #              fileInput("file", "Choose CSV File", accept = ".csv"),
-                                 #              checkboxInput("header", "Header", TRUE),
-                                 #              selectInput("sep", "Separator", choices = c(Comma = ",", Semicolon = ";", Tab = "\t"), selected = ","),
-                                 #              selectInput("columns", "Select Column(s) to Plot", choices = NULL, multiple = TRUE),
-                                 #              width=4, style="text-align:left"),
-                                 #            
-                                 #            mainPanel(
-                                 #              tabsetPanel(
-                                 #                br(),
-                                 #                tabPanel("Data Table", dataTableOutput("table")),
-                                 #                tabPanel("Boxplot", plotlyOutput("boxplot")),
-                                 #                tabPanel("Stacked Bar Plot", plotlyOutput("stacked_bar")),
-                                 #                tabPanel("Heatmap", plotlyOutput("heatmap")),
-                                 #                tabPanel("Pie Chart", plotlyOutput("pie"))
-                                 #              )
-                                 #            )
-                                 #          ),
-                              #   hr(),
-                              #   p("© Developed by G. Sultan, S. Zubair, Dept. of CS, Aligarh Muslim University, Aligarh, India | All Rights Reserved",
-                              #     style="text-align:center; font-family: timesbackground-color:cyan"),
-                              #   hr()
                                  
-                                 #  )  # tabPanel: sub-tabs
-                                 #   )  # tabsetPanel
                         ),  # tabPanel main RNA-seq
-                        
-                        
-     
+
                  
                         #----------------------------------------------------------------------------#
                         #  3 - scRNA ###
@@ -324,10 +269,6 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                         tabPanel(strong("scRNA-Seq"),
                                  #tags$style(HTML(".tabbable > .nav > li[class=active] > a {background-color: #ff9999; color:black}")),
                                  
-                                 # tabsetPanel(
-                                 
-                                 #tabPanel("About RNA-sequencing",
-                                 # br(),
                                  fluidRow(
                                    column(
                                      h4(p(strong("Single cell RNA-Sequencing"),
@@ -346,7 +287,8 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                      #   style="text-align:justify;color:black"),#;background-color:papayawhip;padding:15px;border-radius:10px"),
                                      br(),
                                      
-                                     h4(p(strong("Start Analysis", a(href="",icon("search"))),
+                                     h4(p(strong("Start Analysis"), 
+                                          actionLink("go_to_analysis", icon("tools")),
                                           #style="text-align:left;color:black;background-color:#73a839;padding:15px;border-radius:10px")),#width:150px; 
                                      )),#width:150px; 
                                      
@@ -359,48 +301,16 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                           br(),
                                           width = 5)),
                                  
-                                 # tabPanel("Data Analysis",
-                                 #          br(),
-                                 #          sidebarLayout(
-                                 #            sidebarPanel(
-                                 #              
-                                 #              fileInput("file", "Choose CSV File", accept = ".csv"),
-                                 #              checkboxInput("header", "Header", TRUE),
-                                 #              selectInput("sep", "Separator", choices = c(Comma = ",", Semicolon = ";", Tab = "\t"), selected = ","),
-                                 #              selectInput("columns", "Select Column(s) to Plot", choices = NULL, multiple = TRUE),
-                                 #              width=4, style="text-align:left"),
-                                 #            
-                                 #            mainPanel(
-                                 #              tabsetPanel(
-                                 #                br(),
-                                 #                tabPanel("Data Table", dataTableOutput("table")),
-                                 #                tabPanel("Boxplot", plotlyOutput("boxplot")),
-                                 #                tabPanel("Stacked Bar Plot", plotlyOutput("stacked_bar")),
-                                 #                tabPanel("Heatmap", plotlyOutput("heatmap")),
-                                 #                tabPanel("Pie Chart", plotlyOutput("pie"))
-                                 #              )
-                                 #            )
-                                 #          ),
-                                 #  hr(),
-                                 #  p("© Developed by G. Sultan, S. Zubair, Dept. of CS, Aligarh Muslim University, Aligarh, India | All Rights Reserved",
-                                 #    style="text-align:center; font-family: timesbackground-color:cyan"),
-                                 #  hr()
-                                 
-                                 #  )  # tabPanel: sub-tabs
-                                 #   )  # tabsetPanel
                         ),  # tabPanel main scRNA   
                         
                         
                         #----------------------------------------------------------------------------#
-                        #  3 - scRNA ###
+                        #  3 - Exome ###
                         #----------------------------------------------------------------------------#  
-                        tabPanel(strong("Exome-Seq"),
+                        tabPanel(
+                          title = "Exome-Seq",
                                  #tags$style(HTML(".tabbable > .nav > li[class=active] > a {background-color: #ff9999; color:black}")),
-                                 
-                                 # tabsetPanel(
-                                 
-                                 #tabPanel("About RNA-sequencing",
-                                 # br(),
+
                                  fluidRow(
                                    column(
                                      h4(p(strong("Exome-Sequencing"),
@@ -421,10 +331,11 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                      #   style="text-align:justify;color:black"),#;background-color:papayawhip;padding:15px;border-radius:10px"),
                                      br(),
                                      
-                                     h4(p(strong("Start Analysis", a(href="",icon("search"))),
-                                          #style="text-align:left;color:black;background-color:#73a839;padding:15px;border-radius:10px")),#width:150px; 
-                                     )),#width:150px; 
-                                     
+                                    h4(p(strong("Start Analysis"), 
+                                         actionLink("go_to_analysis", icon("tools")),                  
+                                         )),
+                                    #style="text-align:left;color:black;background-color:#73a839;padding:15px;border-radius:10px")),#width:150px; 
+
                                      width=7),
                                    
                                    
@@ -433,45 +344,16 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                           br(),
                                           br(),
                                           width = 5)),
-                                 
-                                 # tabPanel("Data Analysis",
-                                 #          br(),
-                                 #          sidebarLayout(
-                                 #            sidebarPanel(
-                                 #              
-                                 #              fileInput("file", "Choose CSV File", accept = ".csv"),
-                                 #              checkboxInput("header", "Header", TRUE),
-                                 #              selectInput("sep", "Separator", choices = c(Comma = ",", Semicolon = ";", Tab = "\t"), selected = ","),
-                                 #              selectInput("columns", "Select Column(s) to Plot", choices = NULL, multiple = TRUE),
-                                 #              width=4, style="text-align:left"),
-                                 #            
-                                 #            mainPanel(
-                                 #              tabsetPanel(
-                                 #                br(),
-                                 #                tabPanel("Data Table", dataTableOutput("table")),
-                                 #                tabPanel("Boxplot", plotlyOutput("boxplot")),
-                                 #                tabPanel("Stacked Bar Plot", plotlyOutput("stacked_bar")),
-                                 #                tabPanel("Heatmap", plotlyOutput("heatmap")),
-                                 #                tabPanel("Pie Chart", plotlyOutput("pie"))
-                                 #              )
-                                 #            )
-                                 #          ),
-                                 #  hr(),
-                                 #  p("© Developed by G. Sultan, S. Zubair, Dept. of CS, Aligarh Muslim University, Aligarh, India | All Rights Reserved",
-                                 #    style="text-align:center; font-family: timesbackground-color:cyan"),
-                                 #  hr()
-                                 
-                                 #  )  # tabPanel: sub-tabs
-                                 #   )  # tabsetPanel
-                        ),  # tabPanel main scRNA   
+                                
+                        ),  # tabPanel main Exome0-seq   
                         
                                                 
                         
                       #----------------------------------------------------------------------------#
-                      #  Glossary  
+                      #  Help  
                       #----------------------------------------------------------------------------#
-                      tabPanel(strong("Help"),
-                               
+                      tabPanel(
+                           title = "Help",       
                                column(width=12,
                                       h3("Glossary"),
                                       hr(),
@@ -507,7 +389,7 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                       #  FAQs (Frequently Asked Questions)  
                       #----------------------------------------------------------------------------#
                       
-                      tabPanel(strong("FAQs (Frequently Asked Questions)"),
+                      tabPanel(strong("FAQs"),
                                
                                column(width=12,
                                       h3("Glossary"),
@@ -581,56 +463,38 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                       #----------------------------------------------------------------------------#
                       #  4 - Data Analysis ###
                       #----------------------------------------------------------------------------#  
-                      tabPanel(strong(""),
-                               tags$style(HTML(".tabbable > .nav > li[class=active] > a {background-color: #0FC7CF; color:#ffffff}")),
+                      tabPanel(
+                        title = " ",
+                               #tags$style(HTML(".tabbable > .nav > li[class=active] > a {background-color: #0FC7CF; color:#0FC7CF}")),
                                
                                # collects all of the tab UIs
-                               source("helpers.R"),
-                               navbarPage(id = "navbar2",
-                                          
-                                          # theme = "bootstrap.min.united.updated.css",
-                                          #United theme from http://bootswatch.com/
-                                          title = "",
-                                          #    source("ui-tab-landing.R",local=TRUE)$value,
-                                          ## =========================================================================== ##
-                                          ## DOWNLOAD DATA TABS
-                                          ## =========================================================================== ##
-                                          source("ui-tab-inputdata.R",local=TRUE)$value,
-                                          source("ui-tab-filterdata.R",local=TRUE)$value,
-                                          ## =========================================================================== ##
-                                          ## Visualization TABS
-                                          ## =========================================================================== ##
-                                          source("ui-tab-samplegroupplots.R",local=TRUE)$value,
-                                          source("ui-tab-analysisres.R",local=TRUE)$value,
-                                          source("ui-tab-dotplot.R",local=TRUE)$value,
-                                          source("ui-tab-heatmap.R",local=TRUE)$value,
-                                          #source("ui-tab-help.R",local=TRUE)$value,
-                                          #source("ui-tab-news.R",local=TRUE)$value,
-                                          #source("ui-tab-terms.R",local=TRUE)$value,
-                                          #end definitions of tabs, now footer
-                                          
-                                          # hr(),
-                                          # p("© Developed by G. Sultan, S. Zubair, Dept. of CS, Aligarh Muslim University, Aligarh, India | All Rights Reserved",
-                                          #   style="text-align:center; font-family: timesbackground-color:cyan"),
-                                          # hr(),
-                                          
-                                          #  )  # tabPanel: sub-tabs
-                                          #   )  # tabsetPanel
-                               )  # nav
                                
+                        #source("helpers.R"),
+                               
+                        navbarPage(id = "navbar2",
+                                 # theme = "bootstrap.min.united.updated.css",
+                                 # United theme from http://bootswatch.com/
+                                 title = "",
+                                 #    source("ui-tab-landing.R",local=TRUE)$value,
+                                 ## =========================================================================== ##
+                                 ## DOWNLOAD DATA TABS
+                                 ## =========================================================================== ##
+                                 source("ui-tab-inputdata.R",local=TRUE)$value,
+                                 source("ui-tab-filterdata.R",local=TRUE)$value,
+                                 ## =========================================================================== ##
+                                 ## Visualization TABS
+                                 ## =========================================================================== ##
+                                 source("ui-tab-samplegroupplots.R",local=TRUE)$value,
+                                 source("ui-tab-analysisres.R",local=TRUE)$value,
+                                 source("ui-tab-dotplot.R",local=TRUE)$value,
+                                 source("ui-tab-heatmap.R",local=TRUE)$value,
+                               )  # nav
                       ), #tabPanel main Data Analysis
                          
                     
                       ## ==================================================================================== ##
                       ## FOOTER 
                       ## ==================================================================================== ##              
-                      #footer=p(hr(),p("Developed by", strong("G. Sultan, S. Zubair")," of ", p("Dept. of Computer Science, F/o Science, Aligarh Muslim University, Aligarh, India",align="center",width=4),align="center",width=4),
-                      #         p(("Copyright (C) 2023-2024, All Rights Reserved."),align="center",width=4),
-                      #         # p(("Code available on Github:"),a("https://github.com/jminnier/STARTapp",href="https://github.com/jminnier/STARTapp"),align="center",width=4),
-                      #         # p(a("Nelson JW, Sklenar J, Barnes AP, Minnier J. (2016) `The START App: A Web-Based RNAseq Analysis and Visualization Resource.` Bioinformatics.  doi: 10.1093/bioinformatics/btw624.",href="http://bioinformatics.oxfordjournals.org/content/early/2016/09/27/bioinformatics.btw624.abstract"),align="center",width=4)
-                      #         hr(),
-                      #      ),
-                      #
                       footer=p(hr(),p("© Developed by G. Sultan, S. Zubair, Dept. of CS, Aligarh Muslim University, Aligarh, India | All Rights Reserved",
                                       style="text-align:center; font-family: timesbackground-color:cyan"),
                                hr(),
@@ -644,98 +508,4 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
             ) # navbarPage
             
         ) # fluidPage
-#) # ui
 
-
-##==============================================================================#
-##      S E R V E R       #
-##==============================================================================#
-## Define server logic required to draw a histogram
-#server <- function(input, output, session) {
-#  
-#  # Load data from file - read csv data
-#  mydata <- reactive({
-#    req(input$file)
-#    inFile <- input$file
-#    if (is.null(inFile))
-#      return(NULL)
-#    df <- read.csv(input$file$datapath, header = input$header, sep = input$sep)
-#    updateSelectInput(session, "columns", choices = names(df))
-#    df
-#    
-#    # Remove row names
-#    rownames(df) <- NULL
-#    return(df)
-#  })
-#  
-#  # First tab to show data table
-#  output$table <- renderDataTable({
-#    mydata()
-#  })
-#  
-#  
-#  # Second tab to show boxplot
-#  output$boxplot <- renderPlotly({
-#    req(mydata, input$columns)
-#    
-#    # Extract selected columns from data
-#    selected_columns <- input$columns
-#    data_subset <- mydata()[, selected_columns, drop = FALSE]
-#    
-#    # Plot the boxplots using plotly
-#    p <- plot_ly()
-#    for (i in seq_along(selected_columns)) {
-#      col <- selected_columns[i]
-#      p <- add_boxplot(p, 
-#                       data = data_subset, 
-#                       y = as.formula(paste0("~", col)), 
-#                       name = col,
-#                       position = i - 1)  # Adjust position along the x-axis
-#    }
-#    p <- p %>% layout(title = "", yaxis = list(title = "Expression Intensity"), xaxis = list(title = "Sample Array"))
-#    p
-#  })
-#
-#  
-#  
-#  
-#  # Render stacked bar plot
-#  output$stacked_bar <- renderPlotly({
-#    req(mydata, input$rows)
-#    transposed_data <- as.data.frame(t(mydata()))
-#    transposed_data$Row <- row.names(transposed_data)
-#    
-#    # Filter the data based on selected rows
-#    selected_rows_data <- transposed_data[transposed_data$Row %in% input$rows, ]
-#    
-#    # Exclude the first column from the filtered data
-#    selected_rows_data <- selected_rows_data[-1]
-#    
-#    stacked_bar_data <- reshape2::melt(selected_rows_data, id.vars = "Row")
-#    p <- plot_ly(data = stacked_bar_data, x = ~variable, y = ~value, color = ~Row, type = "bar")
-#    p <- p %>% layout(title = "Stacked Bar Plot of Uploaded Data", xaxis = list(title = "Columns", tickmode = "array", tickvals = 1:(ncol(selected_rows_data)-1), ticktext = names(selected_rows_data)[-1]))
-#    p
-#  })  
-#  
-#  # Render heatmap
-#  output$heatmap <- renderPlotly({
-#    req(mydata[-1])
-#    heatmaply(mydata(), xlab = "Columns", ylab = "Rows", main = "")
-#  })
-#  
-#  
-#        
-# # Fourth tab to show pie chart for selected column
-#
-#  
-#        
-#  # Update select inputs based on loaded data
-#  observe({
-#    req(mydata())
-#    updateSelectInput(session, "columns", choices = names(mydata()))
-#    updateCheckboxGroupInput(session, "rows", choices = row.names(mydata()))
-#    updateSelectInput(session, "xcol3", choices = names(mydata()))
-#  })
-#}
-#
-#shinyApp(ui = ui, server = server)#

@@ -115,7 +115,11 @@ tabPanel("Heatmaps",
                   tabPanel(title="Data Output",
                            downloadButton('downloadHeatmapData_rna', 
                                           'Download Heatmap Data as CSV File'),
-                           dataTableOutput("heatdat_rna"))
+                            br(),
+                            p(""),
+                            div(style="overflow-x: auto;",   # added div to control table horizontal overflow
+                            dataTableOutput("heatdat_rna")
+                           ),
                 )#tabsetPanel
          )#column
          )#fluidrow

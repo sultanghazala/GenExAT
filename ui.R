@@ -353,15 +353,17 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                       #----------------------------------------------------------------------------#
                       
                       tabPanel(strong("Frequently Asked Questions"),
-                               
-                               column(width=12,
-                                      p(strong("How does GenExAT App work?")),
-                                        br(),
-                                        "GenExAT is abbreviated for Gene Expression Analysis Tool. It is a web application that perform analysis based on different types of biological data, including microarray and bulk RNA-seq, single-cell RNA-seq and Exome-seq data. ",
-                                        br(),
-                                        "GenExAT utilizes expression data to perform bioinformatics analysis and output the estimates in the form of tables and figures.",
-                                        br(),
-                                      
+                               tags$style(type = 'text/css', '.tab-content { height: 610px; }'
+                                         ),
+                                        
+                      column(width=12,
+                               p(strong("How does GenExAT App work?")),
+                                     br(),
+                                     "GenExAT is abbreviated for Gene Expression Analysis Tool. It is a web application that perform analysis based on different types of biological data, including microarray and bulk RNA-seq, single-cell RNA-seq and Exome-seq data. ",
+                                     br(),
+                                     "GenExAT utilizes expression data to perform bioinformatics analysis and output the estimates in the form of tables and figures.",
+                                     br(),
+                                      br(),br(),
                                       p(strong("Which data formats GenExAT accept?")),
                                       br(),
                                           "GenExAT accepts data in both excel or CSV (comma seperated values) format.",
@@ -373,19 +375,19 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                           "- Format expression column names as `GROUPNAME_REPLICATE#`, e.g. `Treat_1, # Treat_2,Treat_3, Control_1, Control_2.",
 
                                     br(),
-                                    p(strong("Paired-end sequencing:"),"A process of sequencing from both ends of a DNA fragment in the same run."),
-                                      br(),
+                                    br(),
+                                    br(),
                                       
                                ), #column closing
                                
-                               #fluidRow(p("See More",a(href="https://www.biosyn.com/bioinformatics.aspx", "Here",target="_blank"),
-                               #           style="text-align:left;color:black")#,
+                               fluidRow(p("",a(href="https://www.biosyn.com/bioinformatics.aspx", "",target="_blank"),
+                                          style="text-align:left;color:black")#,
                                         #  hr(),
                                         #  p("© Developed by G. Sultan, S. Zubair, Dept. of CS, Aligarh Muslim University, Aligarh, India | All Rights Reserved",
                                         #    style="text-align:center; font-family: timesbackground-color:cyan"),
                                         #  hr()
-                              # )
-                      ), #glossary tabPanel
+                               )
+                      ), #FAQ tabPanel
                       
                       
 

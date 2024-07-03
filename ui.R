@@ -427,22 +427,7 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                       ), #glossary tabPanel
 
 
-                      #----------------------------------------------------------------------------#
-                      #  Help  
-                      #----------------------------------------------------------------------------#
-                      tabPanel(strong("Help"),       
-                               column(width=12,
-                                      p("For more information please contact the",em("developers"),
-                                           a(href="https://brcafemdb-amu.in/about-us.php#contact", "Here",target="_blank"),
-                                           style="text-align:left;color:black"), 
-                                      br(),
-                                      
-                               ), #column closing
-                      ), # help tabPanel
-                      
-                      
-
-
+                   
                       #----------------------------------------------------------------------------#
                       #  4 - Data Analysis ###
                       #----------------------------------------------------------------------------#  

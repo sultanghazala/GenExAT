@@ -20,7 +20,7 @@ BiocManager::install(c("limma","edgeR"))
 Ghazala Sultan & Swaleha Zubair from Department of Computer Science, AMU, Aligarh, India.
 
 We would appreciate reports of any issues with the app via the issues option of 
-Github(https://github.com/sultanghazala/GeExAT) or email at gsultan@myamu.ac.in.
+Github(https://github.com/sultanghazala/GenExAT) or email at gsultan@myamu.ac.in.
 
 
 # Licensing

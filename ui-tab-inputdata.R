@@ -16,19 +16,16 @@ tabPanel("Input Data & DEG Analysis",
            # PDF of instructions link
            #downloadLink("instructionspdf",label="Download Instructions (pdf)"),
            # Upload data from csv, upload data from RData, use example data
-           radioButtons('data_file_type','Upload your data or start with the example file',
+           radioButtons('data_file_type','Upload your data or start with example file',
                         c('Upload Data'="upload",
                          'Example Data'="examplecounts"
-                        ),selected = "examplecounts"),
+                        ),selected = "upload"),
         
          conditionalPanel(condition="input.data_file_type=='upload'",
                           radioButtons("inputdat_type","Input Data Type:",
-                                     # c("Gene Expression or Gene Counts"="expression_only",
-                                     #   "DEG results from other tool"="analyzed")),
                                      c("Gene Expression "="expression_only",
                                        "Transcript Counts"="expression_only")),
-                          conditionalPanel(
-                            condition="input.inputdat_type=='expression_only'",
+         conditionalPanel(condition="input.inputdat_type=='expression_only'",
                             downloadLink("example_counts_file",label="Download Example Count File"),
                             p(""),
                            # img(src="examplecounts.png",width="100%"),
@@ -105,3 +102,4 @@ tabPanel("Input Data & DEG Analysis",
          )#column
          )#fluidrow
 )#tabpanel
+

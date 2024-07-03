@@ -1,5 +1,5 @@
 ## ==================================================================================== ##
-# App Name: GeExAT - Gene Expression Analysis Tool
+# App Name: GenExAT - Gene Expression Analysis Tool
 # Author: Ghazala Sultan & Swaleha Zubair from Department of Computer Science, AMU, Aligarh, India.
 #
 # This is a Shiny web application with All Rights Reserved to aforementioned Author.
@@ -13,8 +13,12 @@ source("helpers.R")
 print(sessionInfo())
 
 shinyServer(function(input, output,session) {
-  ## Server functions are divided by tab
-  ## 
+## Redirect Start Analysis to Analysis Tab  
+   observeEvent(input$go_to_analysis, {
+    updateNavbarPage(session, "tabs", selected = " ")
+  })
+
+## Server functions are divided by tab
   source("server-inputdata.R",local = TRUE)
   source("server-filterdata.R",local = TRUE)
   source("server-dotplot.R",local = TRUE)

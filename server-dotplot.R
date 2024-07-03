@@ -1,5 +1,5 @@
 ## ==================================================================================== ##
-# App Name: GeExAT - Gene Expression Analysis Tool
+# App Name: GenExAT - Gene Expression Analysis Tool
 # Author: Ghazala Sultan & Swaleha Zubair from Department of Computer Science, AMU, Aligarh, India.
 #
 # This is a Shiny web application with All Rights Reserved to aforementioned Author.
@@ -25,36 +25,12 @@ observe({
                      choices=colnames(tmpgeneids))
   updateRadioButtons(session,"ytype",
                      choices=sort(tmpynames,decreasing = TRUE))
-#   
-# 
-#   output$geneurl <- renderText({
-#     genename = input$sel_gene_rna # this needs to be fixed to have a gene_name to look up
-#     # need to have annotation to get gene name always
-#     out = ""
-#     if(length(genename)>0) {out <- paste0(out,"<p>Click for Info:</p>")}
-#     for(gene in genename) {
-#       tmprow = (unique(as.numeric(unlist(apply(tmpgeneids,2,function(k) match(gene,k,nomatch =0))))))
-#       tmpout = tmpgeneids[tmprow,]
-#       
-#       #if(gene%in%tmpgeneids$gene.id) gene = as.character(mousedata$gene.name[match(gene,mousedata$gene.id)])			
-#       
-#       out <- paste(out,"<p>",gene,":",
-#                    paste0("<a href=\"http://www.genecards.org/cgi-bin/carddisp.pl?gene=", 
-#                           gene,"\"  target=\"_blank\">Genecards;</a>"),
-#                    paste0("<a href=\"http://www.ncbi.nlm.nih.gov/gene/?term=(", 
-#                           gene,"%5BGene+Name%5D)+AND+(Mus+musculus%5BOrganism%5D+)\"  target=\"_blank\">NCBI:gene</a></p>")
-#       )
-#     }
-#     out
-#   })
-#   
-#   
 })
 
 #Show dotplot	
 output$dotplot <- renderPlotly({
   
-  print("drawing dotplot")
+  print("generating box plot")
   
   validate(need(length(input$sel_gene)>0,"Please select a gene."))
   validate(need(length(input$sel_group)>0,"Please select group(s)."))
@@ -92,6 +68,6 @@ output$dat_dotplot <- renderDataTable({
 )			
 
 output$downloadSubsetData <- downloadHandler(
-  filename = c('dotplot_data.csv'),
+  filename = c('boxplot_data.csv'),
   content = function(file) {write.csv(DataDotplotReactive(), file, row.names=FALSE)}
 )

@@ -16,7 +16,7 @@ load_existing_rdata <- function(rdata_filepath) {
   missing_datanames <- setdiff(required_data_names,loaded_datanames)
   validate(
     need(length(missing_datanames)==0, 
-         paste("The data file does not contain all the required data objects for this version of the START app or is the wrong format.
+         paste("The data file does not contain all the required data objects for this version of the GenExAT app or is the wrong format.
          Please reload your data using counts/analyzed data and re-save the .RData file.\nData objects missing:", 
                paste0(missing_datanames,collapse=", ")))
   )
@@ -24,8 +24,6 @@ load_existing_rdata <- function(rdata_filepath) {
   return(start_results)
 }
 
-# rdata_filepath <- "data/mousecounts_example.RData"
-# load_existing_rdata(rdata_filepath)
 
 
 extract_count_data <- function(alldata, tmpexprcols, tmpgenecols) {

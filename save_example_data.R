@@ -8,7 +8,7 @@
 source("helpers.R")
 source("fun-input-analyze-data.R")
 
-alldata  <- read_csv("data/examplecounts_short.csv")
+alldata  <- read_csv("data/examplecounts_short_analyzed.csv")
 
 analyzed_data <- analyze_expression_data(alldata, analysis_method="edgeR", numgeneids = 2)
 names(analyzed_data)

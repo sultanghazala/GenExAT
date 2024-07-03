@@ -1,5 +1,5 @@
 ## ==================================================================================== ##
-# App Name: GeExAT - Gene Expression Analysis Tool
+# App Name: GenExAT - Gene Expression Analysis Tool
 # Author: Ghazala Sultan & Swaleha Zubair from Department of Computer Science, AMU, Aligarh, India.
 #
 # This is a Shiny web application with All Rights Reserved to aforementioned Author.
@@ -9,7 +9,7 @@
 
 
 ## Input data files
-tabPanel("Input Data", 
+tabPanel("Input Data & DEG Analysis", 
          
          ## Left hand column has the input data settings and options
          fluidRow(column(4,wellPanel(

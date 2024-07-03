@@ -1,0 +1,127 @@
+## ==================================================================================== ##
+# App Name: GeExAT - Gene Expression Analysis Tool
+# Author: Ghazala Sultan & Swaleha Zubair from Department of Computer Science, AMU, Aligarh, India.
+#
+# This is a Shiny web application with All Rights Reserved to aforementioned Author.
+# You may contact the author of this code, Ghazala Sultan at <gsultan@myamu.ac.in>
+## ==================================================================================== ##
+
+source("helpers.R")
+source("fun-input-analyze-data.R")
+
+
+x <- load_existing_rdata("data/mousecounts_example.RData")
+str(x)
+
+# Normal example data
+alldata  <- read_csv("data/mousecounts_example.csv")
+tmp = extract_count_data(alldata)
+analysis_method="edgeR"
+numgeneids = 2
+tmp2 <- analyze_expression_data(alldata[1:200,], analysis_method="edgeR", numgeneids = 2)
+glimpse(tmp2$data_long)
+tmp2 <- analyze_expression_data(alldata[1:200,], analysis_method="voom", numgeneids = 2)
+glimpse(tmp2$data_long)
+tmp2 <- analyze_expression_data(alldata[1:200,], analysis_method="linear_model", numgeneids = 2)
+glimpse(tmp2$data_long)
+
+# One group
+testdata  <- read_csv("data/testdata_counts_onegroup.csv")
+tmp3 <- analyze_expression_data(testdata, analysis_method="edgeR", numgeneids = 2)
+glimpse(tmp3$data_long)
+glimpse(tmp3$results)
+tmp3 <- analyze_expression_data(testdata, analysis_method="voom", numgeneids = 2)
+glimpse(tmp3$data_long)
+glimpse(tmp3$results)
+tmp3 <- analyze_expression_data(testdata, analysis_method="linear_model", numgeneids = 2)
+glimpse(tmp3$data_long)
+glimpse(tmp3$results)
+gene_pheatmap(data_long = tmp3$data_long,
+              sampleid = tmp3$sampledata$sampleid,
+              valuename = "count",
+              annotation_row = tmp3$sampledata[,c("sampleid","group")])
+gene_pcaplot(data_long= tmp3$data_long,
+             valuename= "count",
+             sampleid= tmp3$sampledata$sampleid,
+             groupdat= tmp3$sampledata[,c("sampleid","group")],
+             pcnum = 1:2,
+             colorfactor="group")
+
+
+# non-counts
+testdata  <- read_csv("data/testdata_noncounts.csv")
+tmp4 <- analyze_expression_data(testdata, analysis_method="edgeR", numgeneids = 2)
+head(tmp4$results)
+dotplot_fun(data_long = tmp4$data_long,
+            geneids = tmp4$geneids,
+            genelabel="unique_id",
+            sel_group=tmp4$group_names,
+            sel_gene=tmp4$geneids$unique_id[1:2],
+            ytype="log2cpm")
+gene_pcaplot(data_long= tmp4$data_long,
+             valuename= "log2cpm",
+             sampleid= tmp4$sampledata$sampleid,
+             groupdat= tmp4$sampledata[,c("sampleid","group")],
+             pcnum = 1:2,
+             colorfactor="group")
+rna_scatterplot(data_long = tmp4$data_long,
+                results = tmp4$results,
+                group_sel = tmp4$group_names,
+                valuename="log2cpm",
+                color_result_name = "Sign of FC",
+                results_test_name = unique(as.character(tmp4$results$test))[1],
+                color_low = "blue",
+                color_hi = "orange",
+                sel_genes = NULL
+)
+gene_pheatmap(data_long = tmp4$data_long,
+              sampleid = tmp4$sampledata$sampleid,
+              valuename = "log2cpm")
+
+
+png("tmp.png") # can't render in rstudio at the moment
+heatmap_render(
+  data_analyzed=tmp4,
+  yname = "log2cpm",
+  usesubset = FALSE,
+  rowcenter=TRUE,
+  subsetids = NULL,
+  orderby = "variation",
+  FDRcut=0.05,
+  maxgenes=50,
+  view_group=c("group1", "group2"),
+  view_samples=c("group1_1", "group1_2", "group2_1","group2_2"),
+  sel_test=unique(as.character(tmp4$results$test))[1],
+  heatmap_rowlabels=TRUE)
+dev.off()
+fs::file_delete("tmp.png")
+
+# One replication
+testdata  <- read_csv("data/testdata_counts_onerep.csv")
+tmp3 <- analyze_expression_data(testdata, analysis_method="edgeR", numgeneids = 2)
+# need to add option for this somehow
+
+# alldata <- read_csv("~/Downloads/joe515.csv")
+# tmp = extract_count_data(alldata)
+# tmp3 <- analyze_expression_data(alldata, analysis_method="edgeR")
+
+# analyzed data not working
+# sample heatmaps not working
+
+
+testdata <- read_csv("data/testdata_analyzed_onecomparison.csv")
+data_analyzed = load_analyzed_data(testdata, tmpgenecols = 1:2, tmpexprcols = 3:12,
+                         tmpfccols = 13, tmppvalcols = 14, tmpqvalcols = 15, isfclogged = TRUE)
+tmpdatlong = data_analyzed$data_long
+(tmpynames = tmpdatlong%>%select(-unique_id,-sampleid,-group,-one_of("rep"))%>%colnames())
+(tmpgroups = data_analyzed$group_names)
+(tmpsamples = as.character(data_analyzed$sampledata$sampleid))
+tmpdat = data_analyzed$results
+(tmptests = unique(as.character(tmpdat$test)))
+
+# Uploaded data
+testdata <- load("data/testdata_counts_prot_uploaded.RData") # start_list
+testdata <- load_existing_rdata("data/testdata_counts_prot_uploaded.RData")
+
+rdata_filepath <- "data/mousecounts_example.RData"
+testdata <- load_existing_rdata(rdata_filepath)

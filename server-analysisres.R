@@ -1,0 +1,128 @@
+## ==================================================================================== ##
+# App Name: GeExAT - Gene Expression Analysis Tool
+# Author: Ghazala Sultan & Swaleha Zubair from Department of Computer Science, AMU, Aligarh, India.
+#
+# This is a Shiny web application with All Rights Reserved to aforementioned Author.
+# You may contact the author of this code, Ghazala Sultan at <gsultan@myamu.ac.in>
+## ==================================================================================== ##
+
+observe({
+  
+  print("server-analysisres-update")
+  
+  data_analyzed = analyzeDataReactive()
+  tmpdat = data_analyzed$results
+  tmpgroups = data_analyzed$group_names
+  tmptests = unique(as.character(tmpdat$test))
+  tmpdatlong = data_analyzed$data_long
+  tmpynames = tmpdatlong%>%select(-unique_id,-sampleid,-group,-one_of("rep"))%>%colnames()
+  tmpgeneids = data_analyzed$geneids
+  data_analyzedgenes = as.character(unlist(tmpgeneids))
+  
+  updateSelectizeInput(session,'analysisres_test',
+                       choices=tmptests, selected=tmptests[1])
+  
+  updateSelectizeInput(session,'analysisres_groups',
+                       choices=tmpgroups)
+  if(length(tmpgroups)==2) {
+    updateSelectizeInput(session,'analysisres_groups',
+                         choices=tmpgroups,selected = tmpgroups)
+  }
+  updateSelectizeInput(session,"analysisres_genes",
+                       choices=data_analyzedgenes,server=TRUE)
+  
+  updateRadioButtons(session,'scattervaluename',
+                     choices=sort(tmpynames,decreasing = TRUE))
+  updateRadioButtons(session,'scatterresultsname',
+                     choices=tmptests)
+  
+})
+
+
+
+
+
+
+observe({
+  
+  print("drawing volcano plot")
+  
+  data_analyzed = analyzeDataReactive()
+  data_results = data_analyzed$results
+  geneids = data_analyzed$geneids
+  
+  output$volcanoplot <- renderPlotly({
+    validate(need(input$analysisres_test!="","Select a test."))
+    validate(need(data_results%>%filter(test==input$analysisres_test)%>%nrow()>0,"Test not found."))
+    
+    withProgress(message = "Drawing volcano plot, please wait",
+                 {
+                   # rna_volcanoplot(data_results = data_results,
+                   #                 test_sel = input$analysisres_test,
+                   #                 absFCcut = input$analysisres_fold_change_cut,
+                   #                 fdrcut = input$analysisres_fdrcut)%>%
+                   #   bind_shiny("volcanoplot_2groups_ggvis","volcanoplot_2groups_ggvisUI")
+                   if (names(dev.cur()) != "null device") dev.off()
+                   pdf(NULL)
+                   p=rna_volcanoplot(data_results = data_results,
+                                     test_sel = input$analysisres_test,
+                                     absFCcut = input$analysisres_fold_change_cut,
+                                     pvalcut = input$analysisres_pvalcut,
+                                     fdrcut = input$analysisres_fdrcut,
+                                     sel_genes = input$analysisres_genes)
+                   
+                 })#end withProgress
+    
+  }) 
+})
+
+
+
+observe({
+  
+  print("drawing scatterplot")
+  
+  #if(length(input$analysisres_groups)==2) {
+  data_analyzed = analyzeDataReactive()
+  data_long = data_analyzed$data_long
+  geneids = data_analyzed$geneids
+  results = data_analyzed$results
+  
+  
+  
+  # rna_scatterplot(data_long = data_long,
+  #                 group_sel = input$analysisres_groups,
+  #                 valuename=input$scattervaluename)%>%
+  #   bind_shiny("scatterplot_fc_2groups_ggvis","scatterplot_fc_2groups_ggvisUI")
+  
+  
+  
+  output$scatterplot <- renderPlotly({ 
+    validate(need(length(input$analysisres_groups)==2,"Please select two groups."))
+    withProgress(message = "Drawing scatterplot, please wait",{
+      if (names(dev.cur()) != "null device") dev.off()
+      pdf(NULL)
+      
+      p=rna_scatterplot(data_long = data_long,
+                        results = results,
+                        group_sel = input$analysisres_groups,
+                        valuename=input$scattervaluename,
+                        color_result_name = input$scattercolor,
+                        results_test_name = input$scatterresultsname,
+                        color_low = input$scattercolor_low,
+                        color_hi = input$scattercolor_hi,
+                        sel_genes = input$analysisres_genes
+      )
+    })#end withProgress
+  })
+  
+  
+  
+  #}
+})
+
+
+
+
+
+

@@ -1,0 +1,222 @@
+
+#97310e (color: Dark orange)   				> replaced by #8a0f6b
+#ae3910 (color: Dark orange)    			> #893d99
+#bf3e11 (color: Dark orange)   				> #86679e
+#dd4814 (color: red-Orange)     			> #a30b7d
+#bc271c: A dark shade of red.   			> #a60a3e
+#97310e: A darker shade of red-orange.  		> #800962
+
+#df382c: shade of red.                                  >> #a1649d
+#b94a48 - Shade of red (Error)
+	  RGBA: rgba(185, 74, 72, 1)
+#eed3d7: light shade of pink.                         	>> #dab6f0                   
+#f2dede: light shade of red.                    	>> #d47292
+
+.btn-default.focus{color:#ffffff;background-color:#978e83;   >>   .btn-default.focus{color:#a60a3e;background-color:#978e83;border-color:#6f675e}
+#########################################################
+
+
+"#468847" - shade of green,                    > #1188bf
+#dff0d8   #dff0d8 - Light green               - #5192b0      
+#38b44a: A shade of green.                    - #91d0ed
+#468847 - Shade of green (Success)
+	  RGBA: rgba(70, 136, 71, 1)
+#2c8d3a - Shade of green (Success)
+	  RGBA: rgba(44, 141, 58, 1)
+
+
+
+
+
+#########################################################
+
+
+Background Colors:
+	#eeeeee: Light gray - background color for input-group-addon.
+	#ffffff: White - background color for active navigation tabs.
+	rgba(0,0,0,0.125): A semi-transparent black used for box shadow in btn-group.
+Text Colors:
+	#333333: Dark gray - text color for input-group-addon.
+	#777777: Gray - text color for active navigation tabs.
+	#aea79f: Gray - text color for disabled navigation elements.
+Border Colors:
+	#cccccc: Light gray - border color for input-group-addon.
+	#dddddd: Light gray - border color for nav-tabs.
+	#dd4814: A shade of orange - border color for active elements.
+
+
+
+#dddddd: border in the .nav-tabs-justified > .active > a:focus selector. It's a light shade of gray.
+#ffffff: border color -  pure white.
+#bf3e11: border color -  orange-brown.
+
+#97310e: background color  - dark shade of orange-brown.
+#ae3910: background color - slightly lighter shade of orange-brown.
+#772953: background color in the .navbar-inverse selector. It's a shade of purple.
+
+#511c39: border color in the .navbar-inverse selector. It's a dark shade of purple.
+
+
+
+#97310e: dark shade of orange.
+#eeeeee: very light shade of gray.
+#aea79f: light gray shade.
+#f5f5f5: an off-white or very light gray shade.
+#333333: dark shade of gray.
+#ffffff: pure white.
+#dd4814: shade of orange.
+
+#772953: shade of purple.
+#efb73e: shade of yellow.
+
+
+
+
+#dddddd - Light gray
+#333333 - Dark gray
+#f5f5f5 - Very light gray
+
+#3a87ad - Blue
+#d9edf7 - Light blue
+#c09853 - Brown
+#fcf8e3 - Light yellow
+
+
+"#efb73e" - golden yellow, often associated with warmth and brightness.
+
+
+
+"#3a87ad" - medium blue, reminiscent of the color of the sky on a clear day.
+"#c09853" - muted brownish-yellow
+
+
+#ffffff - White
+#cccccc - Light Gray
+#f5f5f5 - Very Light Gray
+#aea79f - Grayish Brown
+#dd4814 - Deep Orange
+#97310e - Dark Orange
+#eeeeee - Pale Gray
+#blue - Blue (Note: This seems like an error in the code as "blue" is not a valid hexadecimal color code.)
+#bc271c - Dark Red
+
+#ffffff: pure white.
+#cccccc: A light shade of gray.
+#f5f5f5: A very light shade of gray, almost white.
+#aea79f: A light gray with a touch of beige.
+
+#eeeeee: A very light shade of gray.
+#772953: A shade of purple with a hint of gray.
+
+#511c39: A deep shade of purple.
+#efb73e: A shade of yellow-orange.
+#333333: A dark shade of gray.
+
+
+#aea79f (color: Light grayish)
+#eeeeee (color: Very light gray)
+#dddddd (color: Light gray)
+#cccccc (color: Gray)
+#ffffff (color: White)
+
+
+
+#772953 (color: Dark purple)
+#511c39 (color: Dark purple)
+#5c2040 (color: Dark purple)
+#3e152b (color: Dark purple)
+#333333 (color: Dark gray)
+
+
+
+#c09853 - Shade of brown (Warning)
+RGBA: rgba(192, 152, 83, 1)
+
+#772953 - Shade of purple (Info)
+RGBA: rgba(119, 41, 83, 1)
+#efb73e - Shade of yellow (Warning)
+RGBA: rgba(239, 183, 62, 1)
+
+#ffffff - White
+RGBA: rgba(255, 255, 255, 1)
+#333333 - Dark shade of gray
+RGBA: rgba(51, 51, 51, 1)
+#aea79f - Light shade of gray
+RGBA: rgba(174, 167, 159, 1)
+
+
+
+
+#333333: This color represents a dark shade of gray.
+#f5f5f5: This color represents a very light shade of gray.
+#ffffff: This color represents pure white.
+
+
+Background Color:
+Hex: #ffffff (White)
+Text Color:
+Hex: #333333 (Dark Gray)
+Link Color:
+Hex: #dd4814 (Orange)
+RGBA: rgba(221, 72, 20, 1)
+Link Hover Color:
+Hex: #97310e (Dark Orange)
+RGBA: rgba(151, 49, 14, 1)
+Success Color:
+Hex: #468847 (Green)
+Info Color:
+Hex: #3a87ad (Blue)
+Warning Color:
+Hex: #c09853 (Light Brown)
+Danger Color:
+Hex: #b94a48 (Red)
+
+
+#bce8f1: light shade of blue.
+#fbeed5: light shade of yellow.
+#fcf8e3: light shade of beige.
+
+#f5f5f5: very light shade of gray.
+#333333: dark shade of gray.
+#000000: black.
+
+
+
+
+Background Color:
+Hexadecimal: #f5f5f5 (Light Gray)
+RGBA: rgba(245, 245, 245, 0.15)
+
+Text Color (Inactive):
+Hexadecimal: #555555 (Dark Gray)
+
+Text Color (Active):
+Hexadecimal: #ffffff (White)
+
+Link Color (Inactive):
+Hexadecimal: #555555 (Dark Gray)
+
+Link Color (Hover/Active):
+Hexadecimal: #555555 (Dark Gray)
+
+Link Background Color (Hover/Active):
+Hexadecimal: #f5f5f5 (Light Gray)
+
+Success Color:
+Hexadecimal: #468847 (Green)
+
+Success Color (Hover/Active):
+Hexadecimal: #d0e9c6 (Light Green)
+
+Info Color:
+Hexadecimal: #3a87ad (Blue)
+Info Color (Hover/Active):
+Hexadecimal: #c4e3f3 (Light Blue)
+Warning Color:
+Hexadecimal: #c09853 (Yellow)
+Warning Color (Hover/Active):
+Hexadecimal: #faf2cc (Light Yellow)
+Danger Color:
+Hexadecimal: #b94a48 (Red)
+Danger Color (Hover/Active):
+Hexadecimal: #ebcccc (Light Red)

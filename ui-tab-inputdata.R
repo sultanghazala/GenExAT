@@ -18,15 +18,9 @@ tabPanel("Input Data & DEG Analysis",
            # Upload data from csv, upload data from RData, use example data
            radioButtons('data_file_type','Upload your data or start with the example file',
                         c('Upload Data'="upload",
-                         #'START RData file'="previousrdata",
-                          'Example Data'="examplecounts"
+                         'Example Data'="examplecounts"
                         ),selected = "examplecounts"),
-        # # Conditional panels appear based on input.data_file_type selection
-        # conditionalPanel(condition="input.data_file_type=='previousrdata'",
-        #                  fileInput('rdatafile','Upload START Generated RData File'),
-        #                  conditionalPanel("output.fileUploaded",
-        #                                   h4(strong("Check data contents then click:")))
-        # ),
+        
          conditionalPanel(condition="input.data_file_type=='upload'",
                           radioButtons("inputdat_type","Input Data Type:",
                                      # c("Gene Expression or Gene Counts"="expression_only",
@@ -101,9 +95,7 @@ tabPanel("Input Data & DEG Analysis",
                                            downloadButton('downloadResults_CSV','Download DEG Analysis Result'),
                                            br(),
                                            p(""),
-                                         #  downloadButton('downloadResults_RData',
-                                         #                 'Save Results as START RData File for Future Upload',
-                                         #                 class="mybuttonclass"),
+                                        
                                          div(style="overflow-x: auto;",   # added div to control table horizontal overflow
                                          dataTableOutput('analysisoutput')
                                          ),

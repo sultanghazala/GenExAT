@@ -37,7 +37,7 @@ tabPanel("Heatmaps",
                             
                             
                             
-                            h3("Filters"),
+                            h4("Filters"),
                             
                             conditionalPanel(condition="input.heatmap_order=='significance'",
                                              selectizeInput("sel_test_heatmap",
@@ -69,7 +69,7 @@ tabPanel("Heatmaps",
                                           "Show a maximum number of genes \n (Note: Selecting >1000 genes may be slow to load. If app crashes memory limits have been reached and you should run from local computer via github.)",value=TRUE),
                             conditionalPanel(condition="input.filter_maxgene==true",    		
                                              numericInput("maxgenes",label="Choose Max # of Genes",
-                                                          min=1,max= 10000,value=100,step=1))
+                                                          min=1,max= 10000,value=10,step=1))
                             
                             #                             #conditionalPanel(condition="output.numgenes>9000",
                             #                             conditionalPanel(condition="input.filter_maxgene==false",    

@@ -66,7 +66,7 @@ tabPanel("Heatmaps",
                                                          min= -20, max=20,value=c(-20,20))),
                             
                             checkboxInput("filter_maxgene",
-                                          "Show a maximum number of genes (WARNING: Selecting >5000 genes may be slow to load. If app crashes memory limits have been reached and you should run from local computer via github.)",value=TRUE),
+                                          "Show a maximum number of genes \n (Note: Selecting >1000 genes may be slow to load. If app crashes memory limits have been reached and you should run from local computer via github.)",value=TRUE),
                             conditionalPanel(condition="input.filter_maxgene==true",    		
                                              numericInput("maxgenes",label="Choose Max # of Genes",
                                                           min=1,max= 10000,value=100,step=1))

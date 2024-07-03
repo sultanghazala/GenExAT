@@ -6,7 +6,7 @@
 # You may contact the author of this code, Ghazala Sultan at <gsultan@myamu.ac.in>
 ## ==================================================================================== ##
 
-tabPanel("PCA (Principal Component Analysis)",
+tabPanel("Box Plots",
          fluidRow(column(4,wellPanel(
            tags$head( tags$style("body {background-color: white; }")),
            selectizeInput("sel_gene",

@@ -117,17 +117,15 @@ analyzeDataReactive <-
                     ## Example data
                     ## ==================================================================================== ##
                     if(input$data_file_type=="examplecounts") {
-                      # load('data/mousecounts_example_analysis_results.RData')
-                      # load('data/mousecounts_example_analyzed.RData') #example_data_results for data_results_table
-                      start_results <- load_existing_rdata('data/mousecounts_example.RData')
+                    #  start_results <- load_existing_rdata('data/mousecounts_example.RData')
                     
                     ## ==================================================================================== ##
                     ## Upload previously downloaded RData
                     ## ==================================================================================== ##
                     
-                    }else if(input$data_file_type=="previousrdata"){
-                      inRfile <- input$rdatafile
-                      start_results <- load_existing_rdata(inRfile$datapath)
+                  #  }else if(input$data_file_type=="previousrdata"){
+                  #    inRfile <- input$rdatafile
+                  #    start_results <- load_existing_rdata(inRfile$datapath)
                     }else{
                     
                     ## ==================================================================================== ##

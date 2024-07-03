@@ -8,10 +8,10 @@
 
 tabPanel("Data Filter", 
          ## ==================================================================================== ##
-         ## Left hand column has the filtera settings and options
+         ## Left hand column has the filter settings and options
          ## ==================================================================================== ##
          fluidRow(column(4,wellPanel(
-           h5("Note: this does not redo any analysis, it merely filters the data already analyzed based on gene identifiers or sample/group names."),
+           #h5("Note: this does not redo any analysis, it merely filters the data already analyzed based on gene identifiers or sample/group names."),
            selectizeInput("datafilter_groups", label="Select Groups",
                           choices=NULL,
                           multiple=TRUE),
@@ -26,21 +26,7 @@ tabPanel("Data Filter",
                                                'text/comma-separated-values,text/plain', 
                                                '.csv'))
            ),
-           # this is complicated since need to calculate fold change based on expression, but we may not know if that
-           # expression value is logged or not, so how do we get fold change vs log fold change from an unknown value? needs more work
-           # checkboxInput("datafilter_fc","Filter by fold change for a pair of groups",
-           #               value=FALSE),
-           # conditionalPanel(condition="input.datafilter_fc==true",
-           #                  selectizeInput("datafilter_fold_change_groups", label="Select 2 Groups (numerator first, denominator second)",
-           #                                 choices=NULL,
-           #                                 selected=NULL,
-           #                                 multiple=TRUE,options = list(maxItems = 2)),
-           #                  numericInput("datafilter_log2fc_cut",
-           #                               label="Choose abs(Log2FC) Minimum",
-           #                               min= 0, max=Inf,value=0),
-           #                  radioButtons("datafilter_log2fc_direction",label = "Restrict Direction of FC",
-           #                               choices=c("No","Up in first group","Down in first group"))
-           # ),#conditionalpanel
+
            checkboxInput("datafilter_signif","Filter by significance",
                          value=FALSE),
            conditionalPanel(condition="input.datafilter_signif==true",
@@ -68,15 +54,18 @@ tabPanel("Data Filter",
          )#wellpanel
          ),#column
          ## ==================================================================================== ##
-         ## Right hand column shows data input DT and data analysis result DT
+         ## Right hand column shows filtered data
          ## ==================================================================================== ##
          column(8,wellPanel(
            h4(textOutput("nrow_filterdata")),
-           downloadButton('download_filtered_data_csv','Save Filtered Results as CSV File'),
+           downloadButton('download_filtered_data_csv','Save Filtered Result'),
+           br(),
+           p(""),
+           div(style="overflow-x: auto;",   # added div to control table horizontal overflow
            dataTableOutput('filterdataoutput')
+           ),
          )#wellpanel
          )#column
          )#fluidRow
-         
-         #download results, download START data with current results but filtered gene lists; download count data with filtered gene lists
+        
 )

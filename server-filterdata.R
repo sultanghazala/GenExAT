@@ -1,5 +1,5 @@
 ## ==================================================================================== ##
-# App Name: GeExAT - Gene Expression Analysis Tool
+# App Name: GenExAT - Gene Expression Analysis Tool
 # Author: Ghazala Sultan & Swaleha Zubair from Department of Computer Science, AMU, Aligarh, India.
 #
 # This is a Shiny web application with All Rights Reserved to aforementioned Author.
@@ -265,7 +265,7 @@ output$nrow_filterdata <- renderText({
 # })
 
 
-output$download_filtered_data_csv <- downloadHandler(filename = paste0("START_results_filtered_",Sys.Date(),".csv"),
+output$download_filtered_data_csv <- downloadHandler(filename = paste0("GenExAT_results_filtered_data_",Sys.Date(),".csv"),
                                               content = function(file) {
                                                 write_csv(filterDataReactive(), file)})
 

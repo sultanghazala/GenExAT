@@ -35,10 +35,10 @@ tabPanel("PCA (Principal Component Analysis)",
                       downloadButton(outputId = "download_pca_plot", label = "Download the PCA plot .png"),
                       plotOutput("pca_plot")
              ),#tabPanel
-             tabPanel(title="Sample Distance Heatmap",
-                      downloadButton(outputId = "download_gene_pheatmap", label = "Download the Heatmap .png"),
-                      plotOutput("gene_pheatmap") 
-             )#tabPanel
+       #      tabPanel(title="Sample Distance Heatmap",
+       #               downloadButton(outputId = "download_gene_pheatmap", label = "Download the Heatmap .png"),
+       #               plotOutput("gene_pheatmap") 
+       #     )#tabPanel
            )#tabsetPanel
          )#mainPanel
          )#sidebarLayout

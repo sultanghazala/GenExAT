@@ -1,5 +1,5 @@
 ## ==================================================================================== ##
-# App Name: GeExAT - Gene Expression Analysis Tool
+# App Name: GenExAT - Gene Expression Analysis Tool
 # Author: Ghazala Sultan & Swaleha Zubair from Department of Computer Science, AMU, Aligarh, India.
 #
 # This is a Shiny web application with All Rights Reserved to aforementioned Author.
@@ -204,12 +204,12 @@ output$analysisoutput <- renderDataTable({
 # Download analyzed data
 
 output$downloadResults_CSV <- downloadHandler(
-  filename = paste0("START_results_",Sys.Date(),".csv"),
+  filename = paste0("GenExAT_results_",Sys.Date(),".csv"),
   content = function(file) {
     write.csv(analyzeDataReactive()$data_results_table, file, row.names=FALSE)})
 
 output$downloadResults_RData <- downloadHandler(
-  filename= paste0("START_results_",Sys.Date(),".RData"),
+  filename= paste0("GenExAT_results_",Sys.Date(),".RData"),
   content=function(file){
     start_list = analyzeDataReactive()
     save(start_list,file=file)

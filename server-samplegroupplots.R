@@ -11,12 +11,27 @@
 observe({
   print("server-samplegroupplots-update-yname")
   data_analyzed = analyzeDataReactive()
+  
+  #ADD
+  tmpgroups = data_analyzed$group_names
+  tmpsamples = as.character(data_analyzed$sampledata$sampleid)
+  tmpdat = data_analyzed$results
+  tmptests = unique(as.character(tmpdat$test))
+  #END ADD
+  
   tmpdatlong = data_analyzed$data_long
   tmpynames = tmpdatlong%>%select(-unique_id,-sampleid,-group,-one_of("rep"))%>%colnames()
   
+  #ADD
+  if("count"%in%tmpynames) tmpynames = tmpynames[-match("count",tmpynames)]
+  #END ADD
+  
   updateRadioButtons(session,'groupplot_valuename',
                      choices=sort(tmpynames,decreasing = TRUE))
-  
+  updateSelectizeInput(session,'sampleres_groups',
+                       choices=tmpgroups, selected=tmpgroups)
+  updateSelectizeInput(session,'sampleres_samples',
+                       choices=tmpsamples, selected=tmpsamples)
 })
 
 #update list of groups
@@ -28,19 +43,29 @@ observe({
   updateSelectizeInput(session,'sampleres_groups',
                        choices=tmpgroups, selected=tmpgroups)
   updateSelectizeInput(session,'sampleres_samples',
-                       choices=tmpsamples, selected=tmpsamples)
+                       choices=tmpsamples, 
+					   selected=tmpsamples)
 })
 
 # sampleres_groups = intersect selected groups with sample names 
+# after selecting group
 observe({
   print("server-sampleplots-update-samples")
   data_analyzed = analyzeDataReactive()
-  tmpgroups = input$sampleres_groups
-  tmpdat = data_analyzed$sampledata%>%filter(group%in%tmpgroups)
-  tmpsamples = as.character(tmpdat$sampleid)  
+  tmpselected = input$sampleres_groups
+  print(tmpselected)
+  if(!is.null(tmpselected)) {
+    if(!(tmpselected[1]=="")) {
+      tmpsampledata = data_analyzed$sampledata
+      tmpsampledata = data_analyzed$sampledata%>%filter(group%in%tmpselected)
+      tmpsamples = as.character(tmpsampledata$sampleid) 
+	  print(tmpsamples)
+	  
   updateSelectizeInput(session,'sampleres_samples',
                        choices=tmpsamples, selected=tmpsamples)
-})
+    }
+  }
+}, priority = 2)
 
 
 fun_gene_pheatmap <- reactive({
@@ -96,6 +121,8 @@ fun_pca_plot <- reactive({
   
   
 })
+
+
   
 output$pca_plot <- renderPlot({fun_pca_plot()})
 

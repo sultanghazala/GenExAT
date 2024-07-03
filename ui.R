@@ -467,10 +467,10 @@ fluidPage(theme = shinytheme("cerulean"), # style='border-right: 1px solid black
                                  ## =========================================================================== ##
                                  ## Visualization TABS
                                  ## =========================================================================== ##
-                                 source("ui-tab-dotplot.R",local=TRUE)$value,
+                                 source("ui-tab-samplegroupplots.R",local=TRUE)$value,
                                  source("ui-tab-analysisres.R",local=TRUE)$value,
                                  source("ui-tab-heatmap.R",local=TRUE)$value,
-                                 source("ui-tab-samplegroupplots.R",local=TRUE)$value,
+                                 source("ui-tab-dotplot.R",local=TRUE)$value,
                                )  # nav
                       ), #tabPanel main Data Analysis
                          
